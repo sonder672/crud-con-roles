@@ -78,7 +78,8 @@ class UsersController extends Controller
         }
         $user = User::find($id);
         $user->update($allInput);
-        
+        /* Es necesario eliminar el rol para poder actualizarlo al nuevo
+         (sin importar si el dato actualizado no es el rol) */
         DB::table('model_has_roles')
         ->where('model_id', $id)
         ->delete(); 

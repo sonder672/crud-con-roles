@@ -20,12 +20,12 @@
                         </div>
                         <div class="form-group">
                             <label>Contenido</label>
-                            <textarea class="form-control" name="content" rows="3" value="{{ isset($notes)?old('content', $notes->content):'' }}"></textarea>
+                            <textarea class="form-control" name="content" rows="3">{{ isset($notes)?old('content', $notes->content):'' }}</textarea>
                           </div>
                     </div>
                         <div>              
                     <button type="submit" class="btn btn-success">Enviar</button>
-                    <a href="{{ route('roles.index') }}" class="btn btn-primary">Volver</a>
+                    <a href="{{ route('notes.index') }}" class="btn btn-primary">Volver</a>
                         </div>
         </div>
     </div>

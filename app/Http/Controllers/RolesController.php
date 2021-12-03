@@ -17,8 +17,6 @@ class RolesController extends Controller
     $this->middleware('permission:deleteRol', ['only' => ['destroy']]);
     }
 
-        
-
     public function index()
     {
         $roles = Role::all();
@@ -35,6 +33,7 @@ class RolesController extends Controller
     {
         $this->validate($request, ['name' => 'required', 'permission' => 'required']);
         $roles = Role::create(['name' => $request->input('name')]);
+        //Sincronizar permisos.
         $roles->syncPermissions($request->input('permission'));
         return redirect()->route('roles.index');
     }
@@ -56,6 +55,7 @@ class RolesController extends Controller
         $roles = Role::find($id);
         $roles->name = $request->input('name');
         $roles->save();
+        //Sincronizar permisos.
         $roles->syncPermissions($request->input('permission'));
         return redirect()->route('roles.index');
     }

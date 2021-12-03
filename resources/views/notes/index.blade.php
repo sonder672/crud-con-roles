@@ -16,7 +16,7 @@
                     @can ('createNote')
                 <a href="{{ route('notes.create') }}" class="btn btn-primary">Crear nota</a>     
                     @endcan
-                <a href="{{ route('roles.index') }}" class="btn btn-primary">Volver</a>
+                <a href="{{ url('/home') }}" class="btn btn-primary">Volver</a>
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>

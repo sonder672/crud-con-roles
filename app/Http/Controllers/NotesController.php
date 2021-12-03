@@ -37,24 +37,27 @@ class NotesController extends Controller
             return redirect()->route('notes.index');
         }
     
-        public function edit(Notes $notes)
+        public function edit($id)
         {
+            $notes = Notes::find($id);
             return view('notes/edit', compact('notes'));
         }
     
-        public function update(Request $request, Notes $notes)
+        public function update(Request $request, $id)
         {
             $request->validate([
                 'title' => 'required',
                 'content' => 'required'
             ]);
+            $notes = Notes::findOrFail($id);
             $notes->update($request->except('_token'));
             return redirect()->route('notes.index');
         }
     
-        public function destroy(Notes $notes)
+        public function destroy($id)
         {
-            $notes->delete();
-            return redirect()->route('notes.index');
+            $note = Notes::find($id);
+            $note->delete();
+            return redirect()->route('notes.index'); 
         }
 }
