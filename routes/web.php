@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('notes', \App\Http\Controllers\NotesController::class)
+        ->except('show');
+    Route::resource('users', \App\Http\Controllers\UsersController::class)
+        ->except('show');
+    Route::resource('roles', \App\Http\Controllers\RolesController::class)
+        ->except('show');
+});
+
