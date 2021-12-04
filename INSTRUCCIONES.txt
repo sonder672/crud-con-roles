@@ -1,0 +1,14 @@
+Previo al uso:
+No olvide ejecutar los siguientes comandos después de la migración con este orden:
+php artisan db:seed --class=PermissionsSeeder
+php artisan db:seed --class=RolesSeeder
+php artisan db:seed --class=RolesPermissionsSeeder
+
+O simplemente ejecute: 
+php artisan migrate:refresh --seed
+
+Puede cambiar el superUser en App > Providers > AuthServiceProvider
+para acceder como superUser debe registrarse con el correo electrónico sonder672@hotmail.com
+Para cambiar el rol por defecto que se le asigna a un usuario debe:
+Para evitar conflictos, cambiar o eliminar los seed RolesSeeder y RolesPermissionsSeeder.
+Por último, debe ir al controlador auth > register y cambiar o eliminar la línea 76 ($user->assignRole('usuario vista'))

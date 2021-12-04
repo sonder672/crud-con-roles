@@ -24,7 +24,12 @@ class PermissionsSeeder extends Seeder
             'showNote', 
             'createNote',
             'editNote',
-            'deleteNote'
+            'deleteNote',
+            //Users
+            'showUser',
+            'CreateUser',
+            'editUser',
+            'deleteUser'
         ];
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);

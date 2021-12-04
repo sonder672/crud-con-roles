@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
-class NotesSeeder extends Seeder
+class RolesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,8 @@ class NotesSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Role::create([
+            'name' => 'Usuario vista'
+        ]);
     }
 }

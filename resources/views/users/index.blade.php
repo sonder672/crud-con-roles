@@ -13,7 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <a href="{{ route('users.create') }}" class="btn btn-primary">Crear usuario</a>
+                    @can('createUser')
+                    <a href="{{ route('users.create') }}" class="btn btn-primary">Crear usuario</a>
+                    @endcan     
                         <a href="{{ url('/home') }}" class="btn btn-primary">Volver</a>
                         <table class="table">
                             <thead class="thead-dark">
@@ -38,13 +40,17 @@
                                         @endforeach
                                     @endif
                                     </td>
-                                    <td >
+                                    <td>
+                                    @can ('editUser')
                                     <a href="{{ route('users.edit', $users->id) }}" class="btn btn-primary">Editar</a>
+                                    @endcan
+                                    @can ('deleteUser')
                                     <form action="{{ route('users.destroy', $users->id) }}" method="post">
                                         @csrf
                                         {{ method_field('DELETE') }}
                                         <button type="submit" class="btn btn-danger">Eliminar</button>
                                     </form>
+                                    @endcan
                                     </td>
                                 </tr>
                                 @endforeach

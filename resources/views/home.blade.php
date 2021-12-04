@@ -16,12 +16,10 @@
                     <h5 class="card-title">Bienvenido</h5>
                     <p class="card-text">Recuerde que para acceder como superUser debe registrarse con el correo electrónico <b>sonder672@hotmail.com</b></p>
                     <p class="card-text">Puede cambiar el superUser en App > Providers > AuthServiceProvider</p>
-                    <p class="card-text">No olvide ejecutar <b>(php artisan db:seed --class=PermissionsSeeder)</b> en su proyecto</p>
-                    
                     <div class="card-body">
-                        <a href="{{ route('users.index') }}" class="card-link">Usuarios</a>
-                        <a href="{{ route('roles.index') }}" class="card-link">Roles</a>
-                        <a href="{{ route('notes.index') }}" class="card-link">Notas</a>
+                        <a href="{{ route('users.index') }}" class="card-link btn btn-primary">Usuarios</a>
+                        <a href="{{ route('roles.index') }}" class="card-link btn btn-primary">Roles</a>
+                        <a href="{{ route('notes.index') }}" class="card-link btn btn-primary">Notas</a>
                       </div>
                 </div>
             </div>

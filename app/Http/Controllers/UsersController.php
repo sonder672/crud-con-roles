@@ -12,6 +12,13 @@ use Spatie\Permission\Models\Role;
 
 class UsersController extends Controller
 {
+    function __construct() {
+        $this->middleware('permission:showUser|createUser|editUser|deleteUser', 
+        ['only' => ['index']]);
+        $this->middleware('permission:createUser', ['only' => ['create', 'store']]);
+        $this->middleware('permission:editUser', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:deleteUser', ['only' => ['destroy']]);
+        }
 
     public function index()
     {
